@@ -11,7 +11,7 @@ Write a node.js script (that will run on AWS Lambda):
 
 Bonus (if you finish earlier than expected):
 
-- [x] Write [README](http://readme.md/) explaining how to run this locally
+- [ ] Write [README](http://readme.md/) explaining how to run this locally
 - [x] Write CloudFormation template for creating S3 and DynamoDB needed for this script.
 - [ ] Write IAM Policy template with min requirements for accessing s3 and DynamoDB.
 - [ ] Extra Bonus: use ECC algorithm instead of RSA
@@ -32,9 +32,3 @@ Reviewing/Expectation:
 - The important points are
   - If you could find the required libraries and read their documentation to find out the required functions to solve your problem
   - If you can search and understand the basic concepts of what is unknown to you
-
-# To test locally
-
-```sh
-npm start
-```

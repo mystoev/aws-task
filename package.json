@@ -1,18 +1,27 @@
 {
-  "name": "entry-task",
-  "version": "1.0.0",
-  "description": "An entry task for dormakaba",
-  "scripts": {
-    "start": "node local.js",
-    "build": "zip -r dist/lambda.zip ."
+  "name": "infra",
+  "version": "0.1.0",
+  "bin": {
+    "infra": "bin/infra.js"
   },
-  "author": "Martin Stoev",
-  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "test": "node local.js",
+    "cdk": "cdk",
+    "synth": "npm run cdk -- synth",
+    "deploy": "npm run cdk -- deploy InfraStack",
+    "destroy": "npm run cdk -- destroy"
+  },
+  "devDependencies": {
+    "aws-cdk": "2.100.0"
+  },
   "dependencies": {
+    "aws-cdk-lib": "2.100.0",
     "@aws-sdk/client-cloudformation": "3.427.0",
     "@aws-sdk/client-dynamodb": "3.427.0",
     "@aws-sdk/client-s3": "3.427.0",
     "@aws-sdk/lib-dynamodb": "3.427.0",
+    "constructs": "^10.0.0",
     "dotenv": "^16.3.1"
   }
 }

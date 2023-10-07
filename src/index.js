@@ -1,8 +1,8 @@
-require("dotenv").config();
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
-const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
-const { X509Certificate, generateKeyPairSync, createSign } = require("crypto");
+import "dotenv/config";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
+import { X509Certificate, generateKeyPairSync, createSign } from "crypto";
 
 const {
   CERTIFICATE_FILE,
@@ -62,7 +62,7 @@ const writeToDynamo = async (key, data) => {
   return response;
 };
 
-const main = async () => {
+export const main = async () => {
   try {
     const cert = await readCertFromS3();
     const { certPublicKey, commonName } = extractCertInfo(cert);
@@ -74,8 +74,4 @@ const main = async () => {
   } catch (err) {
     console.error(err);
   }
-};
-
-module.exports = {
-  main: main,
 };
