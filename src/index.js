@@ -1,13 +1,16 @@
+require("dotenv").config();
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
 const { X509Certificate, generateKeyPairSync, createSign } = require("crypto");
 
-const CERTIFICATE_FILE = "cert.pem";
-const BUCKET_NAME = "d71c3340-64f8-11ee-8c99-0242ac120002";
-const TABLE_NAME = "d71c3340-64f8-11ee-8c99-0242ac120002";
-const KEY_ALGORITHM = "rsa";
-const SIGN_ALGORITHM = "sha256";
+const {
+  CERTIFICATE_FILE,
+  BUCKET_NAME,
+  TABLE_NAME,
+  KEY_ALGORITHM,
+  SIGN_ALGORITHM,
+} = process.env;
 
 const readCertFromS3 = async () => {
   const client = new S3Client({});
