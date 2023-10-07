@@ -2,19 +2,19 @@
 
 Write a node.js script (that will run on AWS Lambda):
 
-- Reading an x509 Certificate(that is in PEM format) from S3(doesn't matter where in S3)
-- Extracts public key from the certificate
-- Extracts the CommonName from the certificate subject
-- Generates a private key using RSA algorithm
-- Signs the Public Key you have extracted with the private key you have generated
-- Writes the encrypted content to DynamoDB with Hash Key equals CommonName
+- [x] Reading an x509 Certificate(that is in PEM format) from S3(doesn't matter where in S3)
+- [x] Extracts public key from the certificate
+- [x] Extracts the CommonName from the certificate subject
+- [x] Generates a private key using RSA algorithm
+- [x] Signs the Public Key you have extracted with the private key you have generated
+- [x] Writes the encrypted content to DynamoDB with Hash Key equals CommonName
 
 Bonus (if you finish earlier than expected):
 
-- Write [README](http://readme.md/) explaining how to run this locally
-- Write CloudFormation template for creating S3 and DynamoDB needed for this script.
-- Write IAM Policy template with min requirements for accessing s3 and DynamoDB.
-- Extra Bonus: use ECC algorithm instead of RSA
+- [x] Write [README](http://readme.md/) explaining how to run this locally
+- [ ] Write CloudFormation template for creating S3 and DynamoDB needed for this script.
+- [ ] Write IAM Policy template with min requirements for accessing s3 and DynamoDB.
+- [ ] Extra Bonus: use ECC algorithm instead of RSA
 
 Remarks:
 
