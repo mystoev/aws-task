@@ -1,8 +1,11 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { X509Certificate, generateKeyPairSync, createSign } from "crypto";
 
 const CERTIFICATE_FILE = "cert.pem";
 const BUCKET_NAME = "d71c3340-64f8-11ee-8c99-0242ac120002";
+const TABLE_NAME = "d71c3340-64f8-11ee-8c99-0242ac120002";
 const KEY_ALGORITHM = "rsa";
 const SIGN_ALGORITHM = "sha256";
 
@@ -38,11 +41,22 @@ const signData = (data) => {
   sign.update(data);
   sign.end();
 
-  return sign.sign(privateKey);
+  return sign.sign(privateKey, "base64");
 };
 
-const writeToDynamo = async (data, publicKey) => {
-  throw Error("not implemented, yet");
+const writeToDynamo = async (key, data) => {
+  const client = new DynamoDBClient({});
+  const docClient = DynamoDBDocumentClient.from(client);
+
+  const command = new PutCommand({
+    TableName: TABLE_NAME,
+    Item: {
+      [key]: data,
+    },
+  });
+
+  const response = await docClient.send(command);
+  return response;
 };
 
 export const main = async () => {
@@ -52,7 +66,7 @@ export const main = async () => {
 
     const signature = signData(certPublicKey);
 
-    await writeToDynamo(signature, certPublicKey);
+    await writeToDynamo(commonName, signature);
     console.log("Success!");
   } catch (err) {
     console.error(err);
