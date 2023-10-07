@@ -1,13 +1,12 @@
 {
   "name": "entry-task",
   "version": "1.0.0",
-  "description": "",
+  "description": "An entry task for dormakaba",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Martin Stoev",
   "license": "ISC"
 }
