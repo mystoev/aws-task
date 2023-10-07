@@ -33,17 +33,7 @@ Reviewing/Expectation:
   - If you could find the required libraries and read their documentation to find out the required functions to solve your problem
   - If you can search and understand the basic concepts of what is unknown to you
 
-# Solution
-
-## Commands used, to generate the cert.pem file:
-
-```sh
-openssl genrsa -out key.pem 2048
-openssl req -new -sha256 -key key.pem -out csr.csr
-openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out certificate.pem
-```
-
-## To run the project locally
+# To test locally
 
 ```sh
 npm start
