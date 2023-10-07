@@ -2,10 +2,9 @@
   "name": "entry-task",
   "version": "1.0.0",
   "description": "An entry task for dormakaba",
-  "type": "module",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node local.js",
+    "build": "zip -r dist/lambda.zip ."
   },
   "author": "Martin Stoev",
   "license": "ISC",

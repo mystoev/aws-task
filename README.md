@@ -43,7 +43,7 @@ openssl req -new -sha256 -key key.pem -out csr.csr
 openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out certificate.pem
 ```
 
-## To run the project
+## To run the project locally
 
 ```sh
 npm start
