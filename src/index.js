@@ -4,13 +4,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { X509Certificate, generateKeyPairSync, createSign } from "crypto";
 
-const {
-  CERTIFICATE_FILE,
-  BUCKET_NAME,
-  TABLE_NAME,
-  KEY_ALGORITHM,
-  SIGN_ALGORITHM,
-} = process.env;
+const { CERTIFICATE_FILE, BUCKET_NAME, TABLE_NAME } = process.env;
 
 const readCertFromS3 = async () => {
   const client = new S3Client({});
@@ -36,11 +30,11 @@ const extractCertInfo = (cert) => {
 };
 
 const signData = (data) => {
-  const { privateKey } = generateKeyPairSync(KEY_ALGORITHM, {
+  const { privateKey } = generateKeyPairSync("rsa", {
     modulusLength: 2048,
   });
 
-  const sign = createSign(SIGN_ALGORITHM);
+  const sign = createSign("sha256");
   sign.update(data);
   sign.end();
 

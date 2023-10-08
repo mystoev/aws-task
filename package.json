@@ -1,15 +1,15 @@
 {
-  "name": "infra",
-  "version": "0.1.0",
-  "bin": {
-    "infra": "bin/infra.js"
+  "name": "entry-task",
+  "version": "1.0.0",
+  "infra": {
+    "main": "infra/main.js"
   },
   "type": "module",
   "scripts": {
-    "test": "node local.js",
+    "local": "node local.js",
     "cdk": "cdk",
     "synth": "npm run cdk -- synth",
-    "deploy": "npm run cdk -- deploy InfraStack",
+    "deploy": "npm run cdk -- deploy EntryTaskStack",
     "destroy": "npm run cdk -- destroy"
   },
   "devDependencies": {
