@@ -30,8 +30,9 @@ const extractCertInfo = (cert) => {
 };
 
 const signData = (data) => {
-  const { privateKey } = generateKeyPairSync("rsa", {
+  const { privateKey } = generateKeyPairSync("ec", {
     modulusLength: 2048,
+    namedCurve: "secp256k1",
   });
 
   const sign = createSign("sha256");

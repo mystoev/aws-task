@@ -14,7 +14,7 @@ Bonus (if you finish earlier than expected):
 - [x] Write [README](http://readme.md/) explaining how to run this locally
 - [x] Write CloudFormation template for creating S3 and DynamoDB needed for this script.
 - [x] Write IAM Policy template with min requirements for accessing s3 and DynamoDB.
-- [ ] Extra Bonus: use ECC algorithm instead of RSA
+- [x] Extra Bonus: use ECC algorithm instead of RSA
 
 Remarks:
 
